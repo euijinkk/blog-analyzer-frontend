@@ -4,13 +4,13 @@ import { ArrowLeftIcon, RefreshCwIcon } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 import { ShareIconButton } from "../components/ShareIconButton";
 import { ShareFullButton } from "../components/ShareFullButton";
-import { DownloadButton } from "../components/DownloadButton";
 import { SummarySection } from "../components/ReportSections/SummarySection";
 import { MbtiSection } from "../components/ReportSections/MbtiSection";
 import { KeywordsSection } from "../components/ReportSections/KeywordsSection";
 import { QuotesSection } from "../components/ReportSections/QuotesSection";
 import { ContentRatioSection } from "../components/ReportSections/ContentRatioSection";
 import { useBlogAnalysis } from "../api/hooks";
+import { AxiosError } from "axios";
 
 export function Report() {
   const navigate = useNavigate();
@@ -43,6 +43,7 @@ export function Report() {
   }
 
   if (isError || !data) {
+    console.log("error", error);
     return (
       <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center">
         <div className="text-center p-8 max-w-md">
@@ -66,7 +67,7 @@ export function Report() {
             분석 중 오류가 발생했습니다
           </h2>
           <p className="text-gray-600 mb-6">
-            {error instanceof Error ? error.message : ""}
+            {error instanceof AxiosError ? error.response?.data : ""}
           </p>
           <div className="flex gap-4 justify-center">
             <button
@@ -86,6 +87,16 @@ export function Report() {
       </div>
     );
   }
+
+  const {
+    summary,
+    summary_explanation,
+    mbti,
+    mbti_explanation,
+    keywords,
+    quotes,
+    content_ratio,
+  } = data.data;
 
   // Render the report when data is available
   return (
@@ -133,13 +144,13 @@ export function Report() {
           </div>
           <div className="space-y-12">
             <SummarySection
-              summary={data.summary}
-              explanation={data.summary_explanation}
+              summary={summary}
+              explanation={summary_explanation}
             />
-            <MbtiSection mbti={data.mbti} explanation={data.mbti_explanation} />
-            <KeywordsSection keywords={data.keywords} />
-            <QuotesSection quotes={data.quotes} />
-            <ContentRatioSection ratios={data.content_ratio} />
+            <MbtiSection mbti={mbti} explanation={mbti_explanation} />
+            <KeywordsSection keywords={keywords} />
+            <QuotesSection quotes={quotes} />
+            <ContentRatioSection ratios={content_ratio} />
           </div>
 
           {/* Share button at the bottom */}

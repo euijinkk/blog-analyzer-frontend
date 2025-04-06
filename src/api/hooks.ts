@@ -31,13 +31,9 @@ export function useBlogAnalysis(blogUrl: string | null) {
         throw new Error("Blog URL is required");
       }
 
-      const response = await api
-        .post("analyze", {
-          json: {
-            blogUrl,
-          },
-        })
-        .json<AnalysisData>();
+      const response = await api.post<AnalysisData>("analyze", {
+        blogUrl,
+      });
 
       return response;
     },
