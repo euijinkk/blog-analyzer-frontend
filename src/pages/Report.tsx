@@ -1,9 +1,10 @@
 // React is used in JSX transformations
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import { ArrowLeftIcon, DownloadIcon, RefreshCwIcon } from "lucide-react";
+import { ArrowLeftIcon, RefreshCwIcon } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 import { ShareIconButton } from "../components/ShareIconButton";
 import { ShareFullButton } from "../components/ShareFullButton";
+import { DownloadButton } from "../components/DownloadButton";
 import { SummarySection } from "../components/ReportSections/SummarySection";
 import { MbtiSection } from "../components/ReportSections/MbtiSection";
 import { KeywordsSection } from "../components/ReportSections/KeywordsSection";
@@ -99,13 +100,9 @@ export function Report() {
               className="flex items-center text-gray-700 hover:text-indigo-600 transition"
             >
               <ArrowLeftIcon size={18} className="mr-1" />
-              <span>다시 분석하기</span>
             </button>
             <div className="flex gap-2">
               <ShareIconButton />
-              <button className="bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition">
-                <DownloadIcon size={18} />
-              </button>
             </div>
           </div>
         </header>
