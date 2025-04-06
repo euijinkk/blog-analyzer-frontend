@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AnalysisForm } from '../components/AnalysisForm';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AnalysisForm } from "../components/AnalysisForm";
 
 export function Home() {
   const navigate = useNavigate();
@@ -8,11 +8,11 @@ export function Home() {
 
   const handleAnalyzeRequest = (blogUrl: string) => {
     // Validate URL
-    if (!blogUrl || !blogUrl.trim().includes('.')) {
-      setError('올바른 URL을 입력해주세요');
+    if (!blogUrl || !blogUrl.trim().includes(".")) {
+      setError("올바른 URL을 입력해주세요");
       return;
     }
-    
+
     // Use React Router to navigate to the report page with the blog URL as a query parameter
     navigate(`/report?blog-url=${encodeURIComponent(blogUrl)}`);
   };
@@ -26,8 +26,7 @@ export function Home() {
               블로그 성향 분석기
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              블로그 링크 하나로 당신의 글쓰기 스타일과 성향을 AI가 분석해 드려요
-              ✨
+              블로그 링크 하나로 글쓰기 스타일과 성향을 AI가 분석해 드려요 ✨
             </p>
             <div className="flex flex-wrap justify-center gap-3 mb-8">
               <div className="bg-indigo-100 rounded-full px-4 py-2 text-indigo-800 font-medium">
@@ -44,14 +43,14 @@ export function Home() {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
             <AnalysisForm onSubmit={handleAnalyzeRequest} error={error} />
           </div>
-          
+
           <div className="mt-16 text-center text-gray-500">
             <p className="mb-2">
-              블로그 10개의 글을 분석하여 당신의 글쓰기 성향을 알려드려요
+              블로그 글을 분석하여 글쓰기 성향을 알려드려요
             </p>
             <p>로그인 없이 바로 이용 가능합니다</p>
           </div>

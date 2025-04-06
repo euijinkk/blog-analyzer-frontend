@@ -36,7 +36,7 @@ export function Report() {
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
             블로그 분석 중...
           </h2>
-          <p className="text-gray-600">약 1분 정도 소요될 수 있습니다</p>
+          <p className="text-gray-600">약 10초 정도 소요될 수 있습니다</p>
         </div>
       </div>
     );
