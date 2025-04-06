@@ -2,12 +2,12 @@
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import {
   ArrowLeftIcon,
-  ShareIcon,
   DownloadIcon,
   RefreshCwIcon,
-  CheckIcon,
 } from "lucide-react";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+import { ShareIconButton } from "../components/ShareIconButton";
+import { ShareFullButton } from "../components/ShareFullButton";
 import { SummarySection } from "../components/ReportSections/SummarySection";
 import { MbtiSection } from "../components/ReportSections/MbtiSection";
 import { KeywordsSection } from "../components/ReportSections/KeywordsSection";
@@ -106,43 +106,7 @@ export function Report() {
               <span>다시 분석하기</span>
             </button>
             <div className="flex gap-2">
-              <button
-                onClick={() => {
-                  // Get the current URL
-                  const currentUrl = window.location.href;
-
-                  // Copy to clipboard
-                  navigator.clipboard
-                    .writeText(currentUrl)
-                    .then(() => {
-                      // Show success toast
-                      toast.success(
-                        <div className="flex items-center space-x-2">
-                          <CheckIcon size={18} />
-                          <span>URL이 복사되었습니다!</span>
-                        </div>,
-                        {
-                          duration: 3000,
-                          style: {
-                            borderRadius: "10px",
-                            background: "#333",
-                            color: "#fff",
-                          },
-                          position: "bottom-center",
-                        }
-                      );
-                    })
-                    .catch(() => {
-                      // Show error toast if copying fails
-                      toast.error("URL 복사 중 오류가 발생했습니다.");
-                    });
-                }}
-                className="bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition"
-                aria-label="공유하기"
-                title="URL 복사하기"
-              >
-                <ShareIcon size={18} />
-              </button>
+              <ShareIconButton position="top-center" />
               <button className="bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition">
                 <DownloadIcon size={18} />
               </button>
@@ -187,44 +151,7 @@ export function Report() {
 
           {/* Share button at the bottom */}
           <div className="mt-16 mb-12 flex justify-center">
-            <button
-              onClick={() => {
-                // Get the current URL
-                const currentUrl = window.location.href;
-
-                // Copy to clipboard
-                navigator.clipboard
-                  .writeText(currentUrl)
-                  .then(() => {
-                    // Show success toast
-                    toast.success(
-                      <div className="flex items-center space-x-2">
-                        <CheckIcon size={18} />
-                        <span>URL이 복사되었습니다!</span>
-                      </div>,
-                      {
-                        duration: 3000,
-                        style: {
-                          borderRadius: "10px",
-                          background: "#333",
-                          color: "#fff",
-                        },
-                        position: "bottom-center",
-                      }
-                    );
-                  })
-                  .catch(() => {
-                    // Show error toast if copying fails
-                    toast.error("URL 복사 중 오류가 발생했습니다.");
-                  });
-              }}
-              className="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl shadow-lg transition-all transform hover:scale-105"
-              aria-label="공유하기"
-              title="URL 복사하기"
-            >
-              <ShareIcon size={20} />
-              <span className="font-medium">분석 결과 공유하기</span>
-            </button>
+            <ShareFullButton position="bottom-center" />
           </div>
         </div>
       </main>
