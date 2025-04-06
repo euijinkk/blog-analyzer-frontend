@@ -1,8 +1,19 @@
-import React from 'react';
+// React is used in JSX transformations
 import { QuoteIcon, ExternalLinkIcon } from 'lucide-react';
+
+interface QuoteItem {
+  quote: string;
+  quote_explanation: string;
+  source_link: string;
+}
+
+interface QuotesSectionProps {
+  quotes: QuoteItem[];
+}
+
 export function QuotesSection({
   quotes
-}) {
+}: QuotesSectionProps) {
   return <section className="bg-white rounded-3xl p-8 shadow-lg">
       <h2 className="text-2xl font-bold mb-6 flex items-center">
         <span className="bg-indigo-100 text-indigo-800 rounded-full w-8 h-8 inline-flex items-center justify-center mr-2">

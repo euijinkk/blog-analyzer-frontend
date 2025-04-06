@@ -1,8 +1,14 @@
-import React from 'react';
+// React is used in JSX transformations
+
+interface SummarySectionProps {
+  summary: string;
+  explanation: string;
+}
+
 export function SummarySection({
   summary,
   explanation
-}) {
+}: SummarySectionProps) {
   return <section className="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-3xl p-8 shadow-lg">
       <h2 className="text-2xl font-bold mb-6 flex items-center">
         <span className="bg-indigo-100 text-indigo-800 rounded-full w-8 h-8 inline-flex items-center justify-center mr-2">

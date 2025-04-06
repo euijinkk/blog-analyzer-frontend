@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ArrowRightIcon } from 'lucide-react';
-export function AnalysisForm({
-  onSubmit,
-  error
-}) {
+
+interface AnalysisFormProps {
+  onSubmit: (blogUrl: string) => void;
+  error: string | null;
+}
+
+export function AnalysisForm({ onSubmit, error }: AnalysisFormProps) {
   const [blogUrl, setBlogUrl] = useState('');
   const [isInvalid, setIsInvalid] = useState(false);
-  const handleSubmit = e => {
+  
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!blogUrl || !blogUrl.trim().includes('.')) {
       setIsInvalid(true);

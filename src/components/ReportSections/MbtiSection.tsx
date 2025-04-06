@@ -1,9 +1,23 @@
-import React from 'react';
+// React is used in JSX transformations
+
+interface MbtiSectionProps {
+  mbti: string;
+  explanation: {
+    "E/I": string;
+    "S/N": string;
+    "T/F": string;
+    "J/P": string;
+    [key: string]: string;
+  };
+}
+
+type MbtiLetter = 'E' | 'I' | 'S' | 'N' | 'T' | 'F' | 'J' | 'P';
+
 export function MbtiSection({
   mbti,
   explanation
-}) {
-  const mbtiColors = {
+}: MbtiSectionProps) {
+  const mbtiColors: Record<MbtiLetter, string> = {
     E: 'bg-red-100 text-red-800',
     I: 'bg-blue-100 text-blue-800',
     S: 'bg-green-100 text-green-800',
@@ -13,8 +27,9 @@ export function MbtiSection({
     J: 'bg-cyan-100 text-cyan-800',
     P: 'bg-orange-100 text-orange-800'
   };
-  const getMbtiLetterClass = letter => {
-    return mbtiColors[letter] || 'bg-gray-100 text-gray-800';
+  
+  const getMbtiLetterClass = (letter: string): string => {
+    return mbtiColors[letter as MbtiLetter] || 'bg-gray-100 text-gray-800';
   };
   return <section className="bg-white rounded-3xl p-8 shadow-lg">
       <h2 className="text-2xl font-bold mb-6 flex items-center">
