@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import ky from "ky";
+import api from "./remote";
 
 // Define interface for the API response data
 export interface AnalysisData {
@@ -23,7 +23,6 @@ export interface AnalysisData {
   };
 }
 
-// Custom hook to fetch blog analysis data
 export function useBlogAnalysis(blogUrl: string | null) {
   return useQuery({
     queryKey: ["blogAnalysis", blogUrl],
@@ -32,19 +31,18 @@ export function useBlogAnalysis(blogUrl: string | null) {
         throw new Error("Blog URL is required");
       }
 
-      const response = await ky
-        .post("https://blog-ai-analyzer.euijinkk97.workers.dev/analyze", {
+      const response = await api
+        .post("analyze", {
           json: {
             blogUrl,
           },
-          timeout: 60000, // 60 seconds timeout for longer analysis
         })
         .json<AnalysisData>();
 
       return response;
     },
-    enabled: !!blogUrl, // Only run the query when blogUrl is available
-    staleTime: 1000 * 60 * 60, // Cache for 1 hour
+    enabled: !!blogUrl,
+    staleTime: 1000 * 60 * 60,
     retry: 1,
   });
 }
