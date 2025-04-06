@@ -1,10 +1,6 @@
 // React is used in JSX transformations
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import {
-  ArrowLeftIcon,
-  DownloadIcon,
-  RefreshCwIcon,
-} from "lucide-react";
+import { ArrowLeftIcon, DownloadIcon, RefreshCwIcon } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 import { ShareIconButton } from "../components/ShareIconButton";
 import { ShareFullButton } from "../components/ShareFullButton";
@@ -106,7 +102,7 @@ export function Report() {
               <span>다시 분석하기</span>
             </button>
             <div className="flex gap-2">
-              <ShareIconButton position="top-center" />
+              <ShareIconButton />
               <button className="bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition">
                 <DownloadIcon size={18} />
               </button>
@@ -151,7 +147,7 @@ export function Report() {
 
           {/* Share button at the bottom */}
           <div className="mt-16 mb-12 flex justify-center">
-            <ShareFullButton position="bottom-center" />
+            <ShareFullButton />
           </div>
         </div>
       </main>

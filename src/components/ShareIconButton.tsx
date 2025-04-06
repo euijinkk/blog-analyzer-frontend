@@ -4,14 +4,10 @@ import { useShareUrl } from "../hooks/useShareUrl";
 
 interface ShareIconButtonProps {
   className?: string;
-  position?: "top-center" | "bottom-center" | "top-right" | "bottom-right";
 }
 
-export function ShareIconButton({
-  className = "",
-  position = "top-center",
-}: ShareIconButtonProps) {
-  const { copyToClipboard } = useShareUrl({ position });
+export function ShareIconButton({ className = "" }: ShareIconButtonProps) {
+  const { copyToClipboard } = useShareUrl();
 
   return (
     <button

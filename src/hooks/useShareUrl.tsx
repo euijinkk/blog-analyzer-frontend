@@ -2,19 +2,7 @@ import { useCallback } from "react";
 import toast from "react-hot-toast";
 import { CheckIcon } from "lucide-react";
 
-type ToastPosition =
-  | "top-center"
-  | "bottom-center"
-  | "top-right"
-  | "bottom-right";
-
-interface UseShareUrlOptions {
-  position?: ToastPosition;
-}
-
-export function useShareUrl({
-  position = "bottom-center",
-}: UseShareUrlOptions = {}) {
+export function useShareUrl() {
   const copyToClipboard = useCallback(() => {
     // Get the current URL
     const currentUrl = window.location.href;
@@ -36,7 +24,7 @@ export function useShareUrl({
               background: "#333",
               color: "#fff",
             },
-            position,
+            position: "bottom-center",
           }
         );
       })
@@ -44,7 +32,7 @@ export function useShareUrl({
         // Show error toast if copying fails
         toast.error("URL 복사 중 오류가 발생했습니다.");
       });
-  }, [position]);
+  }, []);
 
   return { copyToClipboard };
 }

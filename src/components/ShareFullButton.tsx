@@ -4,14 +4,10 @@ import { useShareUrl } from "../hooks/useShareUrl";
 
 interface ShareFullButtonProps {
   className?: string;
-  position?: "top-center" | "bottom-center" | "top-right" | "bottom-right";
 }
 
-export function ShareFullButton({
-  className = "",
-  position = "bottom-center",
-}: ShareFullButtonProps) {
-  const { copyToClipboard } = useShareUrl({ position });
+export function ShareFullButton({ className = "" }: ShareFullButtonProps) {
+  const { copyToClipboard } = useShareUrl();
 
   return (
     <button
