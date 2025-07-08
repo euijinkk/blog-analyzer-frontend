@@ -27,6 +27,14 @@ export function Footer() {
                   문의하기
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/report?blog-url=https%3A%2F%2Fhappysisyphe.tistory.com%2F"
+                  className="text-gray-600 hover:text-purple-600 transition-colors"
+                >
+                  개발자의 블로그 보러가기
+                </Link>
+              </li>
             </ul>
           </div>
 
