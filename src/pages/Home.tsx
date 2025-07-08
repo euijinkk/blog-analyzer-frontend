@@ -18,8 +18,8 @@ export function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white">
-      <main className="min-h-screen w-full flex flex-col items-center px-4 py-12">
+    <div className="bg-gradient-to-b from-indigo-50 to-white">
+      <div className="w-full flex flex-col items-center px-4 py-12">
         <div className="max-w-3xl w-full">
           <div className="text-center mb-12">
             <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent mb-4">
@@ -55,7 +55,7 @@ export function Home() {
             <p>로그인 없이 바로 이용 가능합니다</p>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

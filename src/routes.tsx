@@ -1,7 +1,16 @@
 // React is used in JSX transformations even when not explicitly referenced
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Report } from "./pages/Report";
+import { About } from "./pages/About";
+import { Contact } from "./pages/Contact";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+import { TermsOfService } from "./pages/TermsOfService";
+import { Layout } from "./components/Layout";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Create a client
@@ -17,11 +26,51 @@ const queryClient = new QueryClient({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <Layout>
+        <Home />
+      </Layout>
+    ),
   },
   {
     path: "/report",
-    element: <Report />,
+    element: (
+      <Layout>
+        <Report />
+      </Layout>
+    ),
+  },
+  {
+    path: "/about",
+    element: (
+      <Layout>
+        <About />
+      </Layout>
+    ),
+  },
+  {
+    path: "/contact",
+    element: (
+      <Layout>
+        <Contact />
+      </Layout>
+    ),
+  },
+  {
+    path: "/privacy-policy",
+    element: (
+      <Layout>
+        <PrivacyPolicy />
+      </Layout>
+    ),
+  },
+  {
+    path: "/terms-of-service",
+    element: (
+      <Layout>
+        <TermsOfService />
+      </Layout>
+    ),
   },
   {
     path: "*",
