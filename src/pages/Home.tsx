@@ -40,12 +40,10 @@ export function Home() {
                 #️⃣ 키워드 추출
               </div>
               <div className="bg-emerald-100 rounded-full px-4 py-2 text-emerald-800 font-medium">
-                💬 인상적인 문장
+                💬 명언
               </div>
             </div>
           </div>
-
-          <KakaoAd />
 
           <div className="h-4" />
           <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
