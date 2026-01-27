@@ -1,5 +1,11 @@
+import ErrorPage from "./pages/ErrorPage";
 import { Routes } from "./routes";
+import { ErrorBoundary } from "react-error-boundary";
 
 export function App() {
-  return <Routes />;
+  return (
+    <ErrorBoundary fallback={<ErrorPage />}>
+      <Routes />
+    </ErrorBoundary>
+  );
 }
