@@ -12,11 +12,11 @@ export function ShareIconButton({ className = "" }: ShareIconButtonProps) {
   return (
     <button
       onClick={copyToClipboard}
-      className={`bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition ${className}`}
+      className={`bg-white border-2 border-black p-3 hover:bg-black hover:text-white transition-all duration-200 ${className}`}
       aria-label="공유하기"
       title="URL 복사하기"
     >
-      <ShareIcon size={18} />
+      <ShareIcon size={20} />
     </button>
   );
 }

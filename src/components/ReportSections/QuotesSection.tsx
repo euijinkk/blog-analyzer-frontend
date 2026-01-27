@@ -13,37 +13,30 @@ interface QuotesSectionProps {
 
 export function QuotesSection({ quotes }: QuotesSectionProps) {
   return (
-    <section className="bg-white rounded-3xl p-8 shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 flex items-center">
-        <span className="bg-indigo-100 text-indigo-800 rounded-full w-8 h-8 inline-flex items-center justify-center mr-2">
-          4
-        </span>
-        명언/핵심 문장
+    <section className="swiss-card">
+      <h2 className="text-2xl font-black mb-8 flex items-center uppercase tracking-wide">
+        <span className="swiss-section-number">04</span>
+        NOTABLE QUOTES
       </h2>
-      <div className="space-y-6">
+      <div className="space-y-8">
         {quotes.map((quoteItem, index) => (
-          <div key={index} className="bg-gray-50 rounded-2xl p-6 relative">
-            <QuoteIcon
-              className="absolute top-4 left-4 text-gray-300"
-              size={24}
-            />
-            <div className="ml-6">
-              <p className="text-xl font-medium mb-4 leading-relaxed">
-                "{quoteItem.quote}"
-              </p>
-              <p className="text-gray-600 mb-3 text-sm">
-                {quoteItem.quote_explanation}
-              </p>
-              <a
-                href={quoteItem.source_link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-indigo-600 text-sm flex items-center hover:underline"
-              >
-                <span>원문 보기</span>
-                <ExternalLinkIcon size={14} className="ml-1" />
-              </a>
-            </div>
+          <div key={index} className="border-l-4 border-swiss-accent pl-6 py-2">
+            <QuoteIcon className="text-black mb-4" size={32} />
+            <p className="text-xl md:text-2xl font-bold mb-4 leading-relaxed">
+              "{quoteItem.quote}"
+            </p>
+            <p className="text-black mb-4 text-base">
+              {quoteItem.quote_explanation}
+            </p>
+            <a
+              href={quoteItem.source_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black font-bold uppercase text-sm flex items-center hover:text-swiss-accent transition-colors"
+            >
+              <span>VIEW SOURCE</span>
+              <ExternalLinkIcon size={14} className="ml-2" />
+            </a>
           </div>
         ))}
       </div>

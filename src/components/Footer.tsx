@@ -4,17 +4,19 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
+    <footer className="bg-white border-t-4 border-black">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* 서비스 링크 */}
           <div>
-            <h4 className="font-semibold text-gray-900 mb-4">서비스</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="font-bold text-black mb-6 uppercase tracking-wide text-sm">
+              SERVICE
+            </h4>
+            <ul className="space-y-3 text-sm">
               <li>
                 <Link
                   to="/about"
-                  className="text-gray-600 hover:text-purple-600 transition-colors"
+                  className="text-black hover:text-swiss-accent transition-colors font-medium"
                 >
                   서비스 소개
                 </Link>
@@ -22,7 +24,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/contact"
-                  className="text-gray-600 hover:text-purple-600 transition-colors"
+                  className="text-black hover:text-swiss-accent transition-colors font-medium"
                 >
                   문의하기
                 </Link>
@@ -30,7 +32,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/report?blog-url=https%3A%2F%2Fhappysisyphe.tistory.com%2F"
-                  className="text-gray-600 hover:text-purple-600 transition-colors"
+                  className="text-black hover:text-swiss-accent transition-colors font-medium"
                 >
                   개발자의 블로그 보러가기
                 </Link>
@@ -40,12 +42,14 @@ export function Footer() {
 
           {/* 정책 및 약관 */}
           <div>
-            <h4 className="font-semibold text-gray-900 mb-4">정책</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="font-bold text-black mb-6 uppercase tracking-wide text-sm">
+              POLICY
+            </h4>
+            <ul className="space-y-3 text-sm">
               <li>
                 <Link
                   to="/privacy-policy"
-                  className="text-gray-600 hover:text-purple-600 transition-colors"
+                  className="text-black hover:text-swiss-accent transition-colors font-medium"
                 >
                   개인정보처리방침
                 </Link>
@@ -53,7 +57,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/terms-of-service"
-                  className="text-gray-600 hover:text-purple-600 transition-colors"
+                  className="text-black hover:text-swiss-accent transition-colors font-medium"
                 >
                   이용약관
                 </Link>
@@ -63,9 +67,9 @@ export function Footer() {
         </div>
 
         {/* 하단 저작권 정보 */}
-        <div className="border-t border-gray-200 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm mb-2 md:mb-0">
-            © {currentYear} 블로그 성향 분석기. All rights reserved.
+        <div className="border-t-2 border-black mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-black text-sm font-medium mb-2 md:mb-0">
+            © {currentYear} BLOG ANALYZER. ALL RIGHTS RESERVED.
           </p>
         </div>
       </div>

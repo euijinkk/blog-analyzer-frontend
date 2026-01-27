@@ -1,6 +1,6 @@
 // React is used in JSX transformations
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import { ArrowLeftIcon, RefreshCwIcon } from "lucide-react";
+import { ArrowLeftIcon, RefreshCwIcon, AlertCircle } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 import { ShareIconButton } from "../components/ShareIconButton";
 import { ShareFullButton } from "../components/ShareFullButton";
@@ -28,15 +28,15 @@ export function Report() {
   // Handle errors and loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center">
-        <div className="text-center p-8">
-          <div className="animate-spin mb-4 h-12 w-12 text-indigo-600 mx-auto">
-            <RefreshCwIcon size={48} />
+      <div className="min-h-screen bg-white pattern-dots-subtle flex items-center justify-center">
+        <div className="text-center p-12 border-4 border-black bg-white">
+          <div className="animate-spin mb-6 mx-auto w-16 h-16">
+            <RefreshCwIcon size={64} className="text-black" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            블로그 분석 중...
+          <h2 className="text-2xl font-black text-black uppercase tracking-tight mb-2">
+            ANALYZING...
           </h2>
-          <p className="text-gray-600">약 10초 정도 소요될 수 있습니다</p>
+          <p className="text-black">블로그를 분석하고 있습니다</p>
         </div>
       </div>
     );
@@ -45,42 +45,29 @@ export function Report() {
   if (isError || !data) {
     console.log("error", error);
     return (
-      <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center">
-        <div className="text-center p-8 max-w-md">
-          <div className="text-red-500 mb-4 mx-auto">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-16 w-16 mx-auto"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+      <div className="min-h-screen bg-white pattern-grid-subtle flex items-center justify-center">
+        <div className="text-center p-12 border-4 border-swiss-accent bg-white max-w-md">
+          <div className="text-swiss-accent mb-6 mx-auto">
+            <AlertCircle size={64} className="mx-auto" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            분석 중 오류가 발생했습니다
+          <h2 className="text-2xl font-black text-black uppercase tracking-tight mb-4">
+            ERROR
           </h2>
-          <p className="text-gray-600 mb-6">
-            {error instanceof AxiosError ? error.response?.data : ""}
+          <p className="text-black mb-8">
+            {error instanceof AxiosError ? error.response?.data : "분석 중 오류가 발생했습니다"}
           </p>
           <div className="flex gap-4 justify-center">
             <button
               onClick={() => refetch()}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+              className="swiss-btn-accent"
             >
-              다시 시도
+              RETRY
             </button>
             <Link
               to="/"
-              className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+              className="swiss-btn-outline"
             >
-              홈으로 돌아가기
+              HOME
             </Link>
           </div>
         </div>
@@ -100,49 +87,51 @@ export function Report() {
 
   // Render the report when data is available
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white">
+    <div className="min-h-screen bg-white">
       {/* Toast Container */}
       <Toaster position="top-center" reverseOrder={false} />
       <main className="min-h-screen w-full pb-20">
-        <header className="bg-white shadow-sm sticky top-0 z-10">
+        <header className="bg-white border-b-4 border-black sticky top-0 z-10">
           <div className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
             <button
               onClick={handleBackToHome}
-              className="flex items-center text-gray-700 hover:text-indigo-600 transition"
+              className="flex items-center text-black hover:text-swiss-accent transition p-2 border-2 border-black hover:border-swiss-accent"
             >
-              <ArrowLeftIcon size={18} className="mr-1" />
+              <ArrowLeftIcon size={20} />
             </button>
             <div className="flex gap-2">
               <ShareIconButton />
             </div>
           </div>
         </header>
-        <div className="max-w-4xl mx-auto px-4 pt-8">
-          <div className="mb-12 text-center">
-            <span className="inline-block bg-indigo-100 text-indigo-800 rounded-full px-3 py-1 text-sm font-medium mb-4">
-              블로그 분석 완료 ✓
+        <div className="max-w-4xl mx-auto px-4 pt-12">
+          <div className="mb-16 text-left">
+            <span className="swiss-tag-accent mb-6 inline-block">
+              ANALYSIS COMPLETE
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              당신의 블로그 성향 분석
+            <h1 className="text-display-sm md:text-display-md font-black uppercase tracking-tight mb-6">
+              YOUR BLOG
+              <br />
+              PERSONALITY
             </h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-black text-lg max-w-2xl">
               AI가 분석한 당신의 블로그 글쓰기 스타일과 성향을 확인해보세요
             </p>
             {blogUrl && (
-              <div className="mt-2 text-sm text-gray-500">
-                <span>분석 대상: </span>
+              <div className="mt-4 text-sm border-l-4 border-black pl-4">
+                <span className="font-bold uppercase">TARGET: </span>
                 <a
                   href={blogUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-indigo-600 hover:underline"
+                  className="text-black hover:text-swiss-accent underline"
                 >
                   {blogUrl}
                 </a>
               </div>
             )}
           </div>
-          <div className="space-y-12">
+          <div className="space-y-8">
             <SummarySection
               summary={summary}
               explanation={summary_explanation}

@@ -14,38 +14,35 @@ interface MbtiSectionProps {
 type MbtiLetter = "E" | "I" | "S" | "N" | "T" | "F" | "J" | "P";
 
 export function MbtiSection({ mbti, explanation }: MbtiSectionProps) {
-  const mbtiColors: Record<MbtiLetter, string> = {
-    E: "bg-red-100 text-red-800",
-    I: "bg-blue-100 text-blue-800",
-    S: "bg-green-100 text-green-800",
-    N: "bg-purple-100 text-purple-800",
-    T: "bg-amber-100 text-amber-800",
-    F: "bg-pink-100 text-pink-800",
-    J: "bg-cyan-100 text-cyan-800",
-    P: "bg-orange-100 text-orange-800",
+  const mbtiStyles: Record<MbtiLetter, string> = {
+    E: "bg-black text-white",
+    I: "bg-white text-black border-2 border-black",
+    S: "bg-black text-white",
+    N: "bg-swiss-accent text-white",
+    T: "bg-white text-black border-2 border-black",
+    F: "bg-black text-white",
+    J: "bg-swiss-accent text-white",
+    P: "bg-white text-black border-2 border-black",
   };
 
-  const getMbtiLetterClass = (letter: string): string => {
-    return mbtiColors[letter as MbtiLetter] || "bg-gray-100 text-gray-800";
+  const getMbtiStyle = (letter: string): string => {
+    return mbtiStyles[letter as MbtiLetter] || "bg-white text-black border-2 border-black";
   };
+
   return (
-    <section className="bg-white rounded-3xl p-8 shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 flex items-center">
-        <span className="bg-indigo-100 text-indigo-800 rounded-full w-8 h-8 inline-flex items-center justify-center mr-2">
-          2
-        </span>
-        MBTI 예측
+    <section className="swiss-card">
+      <h2 className="text-2xl font-black mb-8 flex items-center uppercase tracking-wide">
+        <span className="swiss-section-number">02</span>
+        MBTI PREDICTION
       </h2>
-      <div className="flex justify-center mb-8">
-        <div className="flex space-x-2">
+      <div className="flex justify-center mb-12">
+        <div className="flex space-x-3">
           {mbti.split("").map((letter, index) => (
             <div
               key={index}
-              className={`${getMbtiLetterClass(
-                letter
-              )} w-16 h-16 rounded-2xl flex items-center justify-center shadow-sm`}
+              className={`${getMbtiStyle(letter)} w-16 h-16 md:w-20 md:h-20 flex items-center justify-center`}
             >
-              <span className="text-2xl font-bold">{letter}</span>
+              <span className="text-3xl md:text-4xl font-black">{letter}</span>
             </div>
           ))}
         </div>
@@ -54,9 +51,9 @@ export function MbtiSection({ mbti, explanation }: MbtiSectionProps) {
         {Object.values(explanation).map((value, index) => {
           const key = mbti[index];
           return (
-            <div key={key} className="bg-gray-50 rounded-xl p-4">
-              <h3 className="font-semibold mb-1">{key}</h3>
-              <p className="text-gray-700">{value}</p>
+            <div key={key} className="border-2 border-black p-6">
+              <h3 className="font-black text-xl mb-2 uppercase">{key}</h3>
+              <p className="text-black">{value}</p>
             </div>
           );
         })}

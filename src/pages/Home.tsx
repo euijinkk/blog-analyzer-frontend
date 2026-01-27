@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { PenTool, Brain, Hash, Quote } from "lucide-react";
 import { AnalysisForm } from "../components/AnalysisForm";
-import { KakaoAd } from "../components/KakaoAd";
 
 export function Home() {
   const navigate = useNavigate();
@@ -19,43 +19,46 @@ export function Home() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-indigo-50 to-white">
-      <div className="w-full flex flex-col items-center px-4 py-12">
+    <div className="bg-white pattern-grid-subtle">
+      <div className="w-full flex flex-col items-center px-4 py-16">
         <div className="max-w-3xl w-full">
-          <div className="text-center mb-8">
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent mb-4">
-              블로그 성향 분석기
+          {/* 헤더 영역 */}
+          <div className="text-left mb-12">
+            <h1 className="text-display-sm md:text-display-md font-black text-black uppercase tracking-tight mb-6">
+              BLOG
+              <br />
+              ANALYZER
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              블로그 링크 하나로 글쓰기 스타일과 성향을 AI가 분석해 드려요 ✨
+            <p className="text-xl md:text-2xl text-black font-medium">
+              블로그 링크 하나로 글쓰기 스타일과 성향을 AI가 분석해 드려요
             </p>
-            <div className="flex flex-wrap justify-center gap-3 mb-4">
-              <div className="bg-indigo-100 rounded-full px-4 py-2 text-indigo-800 font-medium">
-                ✍️ 글쓰기 스타일
-              </div>
-              <div className="bg-pink-100 rounded-full px-4 py-2 text-pink-800 font-medium">
-                🧠 MBTI 예측
-              </div>
-              <div className="bg-amber-100 rounded-full px-4 py-2 text-amber-800 font-medium">
-                #️⃣ 키워드 추출
-              </div>
-              <div className="bg-emerald-100 rounded-full px-4 py-2 text-emerald-800 font-medium">
-                💬 명언
-              </div>
+          </div>
+
+          {/* 기능 태그 */}
+          <div className="flex flex-wrap gap-3 mb-12">
+            <div className="swiss-tag flex items-center gap-2">
+              <PenTool size={16} />
+              <span>WRITING STYLE</span>
+            </div>
+            <div className="swiss-tag flex items-center gap-2">
+              <Brain size={16} />
+              <span>MBTI</span>
+            </div>
+            <div className="swiss-tag flex items-center gap-2">
+              <Hash size={16} />
+              <span>KEYWORDS</span>
+            </div>
+            <div className="swiss-tag-accent flex items-center gap-2">
+              <Quote size={16} />
+              <span>QUOTES</span>
             </div>
           </div>
 
-          <div className="h-4" />
-          <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+          {/* 폼 컨테이너 */}
+          <div className="swiss-card">
             <AnalysisForm onSubmit={handleAnalyzeRequest} error={error} />
           </div>
 
-          <div className="mt-16 text-center text-gray-500">
-            <p className="mb-2">
-              블로그 글을 분석하여 글쓰기 성향을 알려드려요
-            </p>
-            <p>로그인 없이 바로 이용 가능합니다</p>
-          </div>
         </div>
       </div>
     </div>
