@@ -9,7 +9,7 @@ export function SummarySection({ summary, explanation }: SummarySectionProps) {
   return (
     <section className="swiss-card-accent relative">
       <div className="absolute inset-0 pattern-diagonal opacity-50"></div>
-      <div className="relative z-10">
+      <div className="relative z-[1]">
         <h2 className="text-2xl font-black mb-8 flex items-center uppercase tracking-wide">
           <span className="swiss-section-number">01</span>
           WRITING STYLE
