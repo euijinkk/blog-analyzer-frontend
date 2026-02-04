@@ -1,13 +1,13 @@
 // React is used in JSX transformations
+import { MBTIAxisConfidence } from "../../api/hooks";
 
 interface MbtiSectionProps {
   mbti: string;
   explanation: {
-    "E/I": string;
-    "S/N": string;
-    "T/F": string;
-    "J/P": string;
-    [key: string]: string;
+    "E/I": MBTIAxisConfidence;
+    "S/N": MBTIAxisConfidence;
+    "T/F": MBTIAxisConfidence;
+    "J/P": MBTIAxisConfidence;
   };
 }
 
@@ -48,15 +48,15 @@ export function MbtiSection({ mbti, explanation }: MbtiSectionProps) {
         </div>
       </div>
       <div className="space-y-4">
-        {Object.values(explanation).map((value, index) => {
-          const key = mbti[index];
-          return (
-            <div key={key} className="border-2 border-black p-6">
-              <h3 className="font-black text-xl mb-2 uppercase">{key}</h3>
-              <p className="text-black">{value}</p>
+        {Object.entries(explanation).map(([key, value]) => (
+          <div key={key} className="border-2 border-black p-6">
+            <div className="flex items-center gap-3 mb-3">
+              <h3 className="font-black text-xl uppercase">{key}</h3>
+              <span className="text-blue-600 font-black text-lg">{value.selected}</span>
             </div>
-          );
-        })}
+            <p className="text-black">{value.explanation}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -1,37 +1,65 @@
-import { useQuery } from "@tanstack/react-query";
-import api from "./remote";
+import { useQuery } from '@tanstack/react-query';
+import api from './remote';
 
 // Define interface for the API response data
+export interface TendencyAxis {
+  score: number;
+  label: string;
+  description: string;
+}
+
+export interface MBTIAxisConfidence {
+  selected: string;
+  explanation: string;
+}
+
+export interface FortuneItem {
+  content: string;
+  basedOn: string;
+}
+
 export interface AnalysisData {
-  summary: string;
-  summary_explanation: string;
-  mbti: string;
-  mbti_explanation: {
-    "E/I": string;
-    "S/N": string;
-    "T/F": string;
-    "J/P": string;
+  character: {
+    animal: string;
+    summary: string;
   };
-  keywords: string[];
-  quotes: {
-    quote: string;
-    quote_explanation: string;
-    source_link: string;
-  }[];
-  content_ratio: {
-    [key: string]: string;
+  representativePost: {
+    title: string;
+    link: string;
+    coreSentence: string;
+    explanation: string;
+  };
+  blogTendency: {
+    nightMorning: TendencyAxis;
+    narrativeImpact: TendencyAxis;
+    trendEssence: TendencyAxis;
+    communicationUnilateral: TendencyAxis;
+    completeGrowth: TendencyAxis;
+  };
+  mbtiPrediction: {
+    result: string;
+    confidence: {
+      'E/I': MBTIAxisConfidence;
+      'S/N': MBTIAxisConfidence;
+      'T/F': MBTIAxisConfidence;
+      'J/P': MBTIAxisConfidence;
+    };
+  };
+  fortune: {
+    warnings: FortuneItem[];
+    directions: FortuneItem[];
   };
 }
 
 export function useBlogAnalysis(blogUrl: string | null) {
   return useQuery({
-    queryKey: ["blogAnalysis", blogUrl],
+    queryKey: ['blogAnalysis', blogUrl],
     queryFn: async () => {
       if (!blogUrl) {
-        throw new Error("Blog URL is required");
+        throw new Error('Blog URL is required');
       }
 
-      const response = await api.post<AnalysisData>("analyze", {
+      const response = await api.post<AnalysisData>('analyze', {
         blogUrl,
       });
 

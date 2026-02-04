@@ -4,11 +4,11 @@ import { ArrowLeftIcon, RefreshCwIcon, AlertCircle } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 import { ShareIconButton } from "../components/ShareIconButton";
 import { ShareFullButton } from "../components/ShareFullButton";
-import { SummarySection } from "../components/ReportSections/SummarySection";
+import { CharacterSection } from "../components/ReportSections/CharacterSection";
 import { MbtiSection } from "../components/ReportSections/MbtiSection";
-import { KeywordsSection } from "../components/ReportSections/KeywordsSection";
-import { QuotesSection } from "../components/ReportSections/QuotesSection";
-import { ContentRatioSection } from "../components/ReportSections/ContentRatioSection";
+import { RepresentativePostSection } from "../components/ReportSections/RepresentativePostSection";
+import { BlogTendencySection } from "../components/ReportSections/BlogTendencySection";
+import { FortuneSection } from "../components/ReportSections/FortuneSection";
 import { useBlogAnalysis } from "../api/hooks";
 import { AxiosError } from "axios";
 
@@ -76,13 +76,11 @@ export function Report() {
   }
 
   const {
-    summary,
-    summary_explanation,
-    mbti,
-    mbti_explanation,
-    keywords,
-    quotes,
-    content_ratio,
+    character,
+    representativePost,
+    blogTendency,
+    mbtiPrediction,
+    fortune,
   } = data.data;
 
   // Render the report when data is available
@@ -132,14 +130,14 @@ export function Report() {
             )}
           </div>
           <div className="space-y-8">
-            <SummarySection
-              summary={summary}
-              explanation={summary_explanation}
+            <CharacterSection character={character} />
+            <MbtiSection
+              mbti={mbtiPrediction.result}
+              explanation={mbtiPrediction.confidence}
             />
-            <MbtiSection mbti={mbti} explanation={mbti_explanation} />
-            <KeywordsSection keywords={keywords} />
-            <QuotesSection quotes={quotes} />
-            <ContentRatioSection ratios={content_ratio} />
+            <RepresentativePostSection post={representativePost} />
+            <BlogTendencySection tendency={blogTendency} />
+            <FortuneSection fortune={fortune} />
           </div>
 
           {/* Share button at the bottom */}
