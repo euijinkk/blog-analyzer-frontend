@@ -68,7 +68,7 @@ function TendencyBar({
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          marginBottom: 3,
+          marginBottom: 4,
         }}
       >
         <span
@@ -189,7 +189,7 @@ export const StoryCard = React.forwardRef<HTMLDivElement, StoryCardProps>(
             display: "flex",
             alignItems: "center",
             gap: 20,
-            marginBottom: 20,
+            marginBottom: 16,
           }}
         >
           <img
@@ -209,7 +209,7 @@ export const StoryCard = React.forwardRef<HTMLDivElement, StoryCardProps>(
                 display: "flex",
                 alignItems: "center",
                 gap: 12,
-                marginBottom: 6,
+                marginBottom: 12,
               }}
             >
               <h1
