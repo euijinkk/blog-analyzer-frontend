@@ -26,16 +26,16 @@ export function CharacterSection({ character }: CharacterSectionProps) {
   const imagePath = `/images/${getAnimalImage(animalName)}`;
 
   return (
-    <section className="swiss-card">
-      <h2 className="text-2xl font-black mb-8 flex items-center uppercase tracking-wide">
+    <section className="swiss-card pattern-dots-subtle">
+      <h2 className="text-xl md:text-2xl font-black mb-4 md:mb-8 flex items-center uppercase tracking-wide">
         <span className="swiss-section-number">01</span>
-        당신의 블로그 캐릭터
+        블로그 캐릭터
       </h2>
       <div className="text-center">
         <img
           src={imagePath}
           alt={animalName}
-          className="w-48 h-48 mx-auto object-contain mb-6"
+          className="w-48 h-48 mx-auto object-contain mb-6 transition-transform duration-200 ease-out"
         />
         <div className="text-2xl font-black mb-4 uppercase">{animalName}</div>
         <p className="text-black text-lg leading-relaxed">{character.summary}</p>

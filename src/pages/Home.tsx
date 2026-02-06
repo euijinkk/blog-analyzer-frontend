@@ -27,7 +27,7 @@ export function Home() {
             <h1 className="text-display-sm md:text-display-md font-black text-black uppercase tracking-tight mb-6">
               BLOG
               <br />
-              ANALYZER
+              PERSONALITY
             </h1>
             <p className="text-xl md:text-2xl text-black font-medium">
               블로그 링크 하나로 글쓰기 스타일과 성향을 AI가 분석해 드려요

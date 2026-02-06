@@ -17,7 +17,7 @@ export function ShareFullButton({ className = "" }: ShareFullButtonProps) {
       title="URL 복사하기"
     >
       <ShareIcon size={20} />
-      <span>SHARE RESULT</span>
+      <span>공유하기</span>
     </button>
   );
 }
