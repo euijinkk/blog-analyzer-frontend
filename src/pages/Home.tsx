@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PenTool, Brain, Hash, Quote } from "lucide-react";
 import { AnalysisForm } from "../components/AnalysisForm";
+import { trackEvent } from "../analytics/amplitude";
 
 export function Home() {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ export function Home() {
       return;
     }
 
+    trackEvent("click_analyze", { blog_url: blogUrl });
     // Use React Router to navigate to the report page with the blog URL as a query parameter
     navigate(`/report?blog-url=${encodeURIComponent(blogUrl)}`);
   };

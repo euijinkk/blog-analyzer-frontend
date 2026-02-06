@@ -1,9 +1,11 @@
 import { useCallback } from "react";
 import toast from "react-hot-toast";
 import { CheckIcon } from "lucide-react";
+import { trackEvent } from "../analytics/amplitude";
 
 export function useShareUrl() {
   const copyToClipboard = useCallback(() => {
+    trackEvent("click_share", { page_path: window.location.pathname });
     // Get the current URL
     const currentUrl = window.location.href;
 

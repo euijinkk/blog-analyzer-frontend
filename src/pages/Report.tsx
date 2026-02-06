@@ -1,6 +1,7 @@
 // React is used in JSX transformations
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { ArrowLeftIcon, RefreshCwIcon, AlertCircle, DownloadIcon } from "lucide-react";
+import { trackEvent } from "../analytics/amplitude";
 import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
 import { ShareIconButton } from "../components/ShareIconButton";
@@ -58,11 +59,18 @@ export function Report() {
             ERROR
           </h2>
           <p className="text-black mb-8">
-            {error instanceof AxiosError ? error.response?.data : "분석 중 오류가 발생했습니다"}
+            {error instanceof AxiosError
+              ? (typeof error.response?.data === "string"
+                ? error.response.data
+                : error.response?.data?.message ?? "분석 중 오류가 발생했습니다")
+              : "분석 중 오류가 발생했습니다"}
           </p>
           <div className="flex gap-4 justify-center">
             <button
-              onClick={() => refetch()}
+              onClick={() => {
+                trackEvent("click_retry", { blog_url: blogUrl ?? "" });
+                refetch();
+              }}
               className="swiss-btn-accent"
             >
               RETRY
@@ -142,6 +150,10 @@ export function Report() {
             <ShareFullButton />
             <button
               onClick={async () => {
+                trackEvent("click_save_image", {
+                  character_animal: character.animal,
+                  mbti_result: mbtiPrediction.result,
+                });
                 await downloadStoryImage(
                   character.animal,
                   mbtiPrediction.result
