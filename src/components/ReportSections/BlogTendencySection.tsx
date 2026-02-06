@@ -27,14 +27,14 @@ export function BlogTendencySection({
 }: BlogTendencySectionProps) {
   return (
     <section className="swiss-card pattern-dots-subtle">
-      <h2 className="text-2xl font-black mb-8 flex items-center uppercase tracking-wide">
+      <h2 className="text-xl md:text-2xl font-black mb-4 md:mb-8 flex items-center uppercase tracking-wide">
         <span className="swiss-section-number">02</span>
         블로그 성향 분석
       </h2>
 
-      <div className="space-y-8">
+      <div className="space-y-4 md:space-y-8">
         {Object.entries(tendency).map(([key, axis]) => (
-          <div key={key} className="pb-8 border-b-4 border-black last:border-b-0 last:pb-0">
+          <div key={key} className="pb-4 md:pb-8 border-b-4 border-black last:border-b-0 last:pb-0">
             <div className="flex justify-between items-center mb-3">
               <span className="font-black text-lg uppercase">
                 {getTendencyName(key)}

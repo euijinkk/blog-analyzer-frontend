@@ -88,10 +88,7 @@ export function PrivacyPolicy() {
               <p>원활한 서비스 제공을 위해 다음 서비스를 이용합니다:</p>
               <ul className="list-none mt-2 space-y-1">
                 <li>
-                  — <strong>OpenAI:</strong> 블로그 텍스트 분석
-                </li>
-                <li>
-                  — <strong>Google AdSense:</strong> 광고 서비스
+                  — <strong>Gemini:</strong> 블로그 텍스트 분석
                 </li>
               </ul>
             </div>
@@ -148,7 +145,7 @@ export function PrivacyPolicy() {
               <p>개인정보 관련 문의사항이 있으시면 아래로 연락해 주세요:</p>
               <div className="mt-3 p-4 border-2 border-black">
                 <p>
-                  <strong>EMAIL:</strong> euijinkk97@gmail.com
+                  <strong>EMAIL:</strong> <a href="mailto:euijinkk97@gmail.com">euijinkk97@gmail.com</a>
                 </p>
               </div>
             </div>

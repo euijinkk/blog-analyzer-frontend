@@ -36,9 +36,8 @@ export function AnalysisForm({ onSubmit, error }: AnalysisFormProps) {
             value={blogUrl}
             onChange={(e) => setBlogUrl(e.target.value)}
             placeholder="https://example.blog.com"
-            className={`swiss-input ${
-              isInvalid ? "border-swiss-accent" : "border-black"
-            }`}
+            className={`swiss-input ${isInvalid ? "border-swiss-accent" : "border-black"
+              }`}
           />
           {isInvalid && (
             <p className="text-swiss-accent mt-3 text-sm font-medium uppercase">
@@ -56,7 +55,7 @@ export function AnalysisForm({ onSubmit, error }: AnalysisFormProps) {
         type="submit"
         className="swiss-btn-accent w-full flex items-center justify-center"
       >
-        <span className="mr-3">START ANALYSIS</span>
+        <span className="mr-3">분석하기</span>
         <ArrowRightIcon size={20} />
       </button>
     </form>

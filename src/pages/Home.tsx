@@ -30,7 +30,7 @@ export function Home() {
               PERSONALITY
             </h1>
             <p className="text-xl md:text-2xl text-black font-medium">
-              블로그 링크 하나로 글쓰기 스타일과 성향을 AI가 분석해 드려요
+              블로그 링크 하나로 글쓰기 스타일과 성향을 분석해 드려요
             </p>
           </div>
 
@@ -38,19 +38,19 @@ export function Home() {
           <div className="flex flex-wrap gap-3 mb-12">
             <div className="swiss-tag flex items-center gap-2">
               <PenTool size={16} />
-              <span>WRITING STYLE</span>
+              <span>글쓰기 스타일</span>
             </div>
             <div className="swiss-tag flex items-center gap-2">
               <Brain size={16} />
-              <span>MBTI</span>
+              <span>MBTI 추측</span>
             </div>
             <div className="swiss-tag flex items-center gap-2">
               <Hash size={16} />
-              <span>KEYWORDS</span>
+              <span>운세</span>
             </div>
             <div className="swiss-tag-accent flex items-center gap-2">
               <Quote size={16} />
-              <span>QUOTES</span>
+              <span>대표 작품</span>
             </div>
           </div>
 
