@@ -1,15 +1,18 @@
 // React is used in JSX transformations
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import { ArrowLeftIcon, RefreshCwIcon, AlertCircle } from "lucide-react";
+import { ArrowLeftIcon, RefreshCwIcon, AlertCircle, DownloadIcon } from "lucide-react";
 import { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { ShareIconButton } from "../components/ShareIconButton";
 import { ShareFullButton } from "../components/ShareFullButton";
+import { StoryCard } from "../components/StoryCard";
 import { CharacterSection } from "../components/ReportSections/CharacterSection";
 import { MbtiSection } from "../components/ReportSections/MbtiSection";
 import { RepresentativePostSection } from "../components/ReportSections/RepresentativePostSection";
 import { BlogTendencySection } from "../components/ReportSections/BlogTendencySection";
 import { FortuneSection } from "../components/ReportSections/FortuneSection";
 import { useBlogAnalysis } from "../api/hooks";
+import { useStoryDownload } from "../hooks/useStoryDownload";
 import { AxiosError } from "axios";
 
 export function Report() {
@@ -19,6 +22,7 @@ export function Report() {
 
   // Use React Query to fetch data
   const { data, isLoading, isError, error, refetch } = useBlogAnalysis(blogUrl);
+  const { cardRef, downloadStoryImage } = useStoryDownload();
 
   // Handle back to home
   const handleBackToHome = () => {
@@ -93,7 +97,7 @@ export function Report() {
           <div className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
             <button
               onClick={handleBackToHome}
-              className="flex items-center text-black hover:text-swiss-accent transition p-2 border-2 border-black hover:border-swiss-accent"
+              className="flex items-center text-black hover:text-swiss-accent transition p-2 border-4 border-black hover:border-swiss-accent"
             >
               <ArrowLeftIcon size={20} />
             </button>
@@ -102,22 +106,15 @@ export function Report() {
             </div>
           </div>
         </header>
-        <div className="max-w-4xl mx-auto px-4 pt-12">
-          <div className="mb-16 text-left">
-            <span className="swiss-tag-accent mb-6 inline-block">
-              ANALYSIS COMPLETE
-            </span>
-            <h1 className="text-display-sm md:text-display-md font-black uppercase tracking-tight mb-6">
-              YOUR BLOG
-              <br />
+        <div className="max-w-4xl mx-auto px-4 pt-6 md:pt-12">
+          <div className="mb-8 md:mb-16 text-left">
+            <h1 className="text-display-sm md:text-display-md font-black uppercase tracking-tight mb-4 md:mb-6">
+              BLOG
               PERSONALITY
             </h1>
-            <p className="text-black text-lg max-w-2xl">
-              AI가 분석한 당신의 블로그 글쓰기 스타일과 성향을 확인해보세요
-            </p>
+
             {blogUrl && (
               <div className="mt-4 text-sm border-l-4 border-black pl-4">
-                <span className="font-bold uppercase">TARGET: </span>
                 <a
                   href={blogUrl}
                   target="_blank"
@@ -129,20 +126,53 @@ export function Report() {
               </div>
             )}
           </div>
-          <div className="space-y-8">
+          <div className="space-y-4 md:space-y-8">
             <CharacterSection character={character} />
+            <BlogTendencySection tendency={blogTendency} />
             <MbtiSection
               mbti={mbtiPrediction.result}
               explanation={mbtiPrediction.confidence}
             />
             <RepresentativePostSection post={representativePost} />
-            <BlogTendencySection tendency={blogTendency} />
             <FortuneSection fortune={fortune} />
           </div>
 
-          {/* Share button at the bottom */}
-          <div className="mt-16 mb-12 flex justify-center">
+          {/* Share buttons at the bottom */}
+          <div className="mt-8 mb-6 md:mt-16 md:mb-12 flex justify-center gap-4">
             <ShareFullButton />
+            <button
+              onClick={async () => {
+                await downloadStoryImage(
+                  character.animal,
+                  mbtiPrediction.result
+                );
+                toast.success(
+                  "이미지가 저장되었습니다."
+                );
+              }}
+              className="swiss-btn-accent flex items-center space-x-3"
+              aria-label="인스타 스토리 저장"
+              title="인스타 스토리 이미지 저장"
+            >
+              <DownloadIcon size={20} />
+              <span>이미지 저장</span>
+            </button>
+          </div>
+
+          {/* Offscreen StoryCard for capture */}
+          <div
+            style={{
+              position: "absolute",
+              left: "-9999px",
+              top: "0",
+            }}
+          >
+            <StoryCard
+              ref={cardRef}
+              character={character}
+              mbti={mbtiPrediction.result}
+              blogTendency={blogTendency}
+            />
           </div>
         </div>
       </main>

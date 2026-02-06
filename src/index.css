@@ -21,26 +21,32 @@
   /* 그리드 패턴 */
   .pattern-grid {
     background-image:
-      linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px);
+      linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
   .pattern-grid-subtle {
     background-image:
-      linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
   /* 도트 패턴 */
   .pattern-dots {
-    background-image: radial-gradient(rgba(0,0,0,0.15) 1.5px, transparent 1.5px);
+    background-image: radial-gradient(
+      rgba(0, 0, 0, 0.15) 1.5px,
+      transparent 1.5px
+    );
     background-size: 16px 16px;
   }
 
   .pattern-dots-subtle {
-    background-image: radial-gradient(rgba(0,0,0,0.04) 1.5px, transparent 1.5px);
+    background-image: radial-gradient(
+      rgba(0, 0, 0, 0.04) 1.5px,
+      transparent 1.5px
+    );
     background-size: 16px 16px;
   }
 
@@ -50,23 +56,33 @@
       -45deg,
       transparent,
       transparent 10px,
-      rgba(0,0,0,0.02) 10px,
-      rgba(0,0,0,0.02) 20px
+      rgba(0, 0, 0, 0.02) 10px,
+      rgba(0, 0, 0, 0.02) 20px
     );
   }
 
   /* Swiss 카드 */
   .swiss-card {
-    @apply bg-white border-2 border-black rounded-none p-8;
+    @apply bg-white border-4 border-black rounded-none p-6
+           transition-all duration-200 ease-out;
   }
 
   .swiss-card-accent {
-    @apply bg-white border-4 border-swiss-accent rounded-none p-8;
+    @apply bg-white border-4 border-swiss-accent rounded-none p-6;
+  }
+
+  @media (min-width: 768px) {
+    .swiss-card {
+      padding: 3rem;
+    }
+    .swiss-card-accent {
+      padding: 3rem;
+    }
   }
 
   /* Swiss 버튼 */
   .swiss-btn {
-    @apply bg-black text-white border-2 border-black rounded-none px-8 py-4
+    @apply bg-black text-white border-4 border-black rounded-none px-8 py-4
            font-bold uppercase tracking-wide transition-all duration-200;
   }
 
@@ -75,7 +91,7 @@
   }
 
   .swiss-btn-outline {
-    @apply bg-white text-black border-2 border-black rounded-none px-8 py-4
+    @apply bg-white text-black border-4 border-black rounded-none px-8 py-4
            font-bold uppercase tracking-wide transition-all duration-200;
   }
 
@@ -84,7 +100,7 @@
   }
 
   .swiss-btn-accent {
-    @apply bg-swiss-accent text-white border-2 border-swiss-accent rounded-none px-8 py-4
+    @apply bg-swiss-accent text-white border-4 border-swiss-accent rounded-none px-8 py-4
            font-bold uppercase tracking-wide transition-all duration-200;
   }
 
@@ -94,29 +110,27 @@
 
   /* Swiss 입력 필드 */
   .swiss-input {
-    @apply w-full px-4 py-4 border-2 border-black rounded-none
+    @apply w-full px-4 py-4 border-4 border-black rounded-none
            focus:outline-none focus:border-swiss-accent transition-colors;
   }
 
   /* Swiss 태그 */
   .swiss-tag {
-    @apply inline-block border-2 border-black rounded-none px-4 py-2
+    @apply inline-block border-4 border-black rounded-none px-4 py-2
            font-bold uppercase text-sm tracking-wide transition-all duration-200;
   }
 
-  .swiss-tag:hover {
-    @apply bg-black text-white;
-  }
-
   .swiss-tag-accent {
-    @apply inline-block bg-swiss-accent text-white border-2 border-swiss-accent
+    @apply inline-block bg-swiss-accent text-white border-4 border-swiss-accent
            rounded-none px-4 py-2 font-bold uppercase text-sm tracking-wide;
   }
 
   /* Swiss 섹션 넘버 */
   .swiss-section-number {
-    @apply inline-flex items-center justify-center w-10 h-10
-           bg-swiss-accent text-white font-bold text-sm rounded-none mr-3;
+    @apply inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16
+           bg-swiss-accent text-white font-black text-lg md:text-xl
+           rounded-none mr-3 md:mr-4 tracking-widest
+           transition-all duration-150 ease-out;
   }
 }
 
