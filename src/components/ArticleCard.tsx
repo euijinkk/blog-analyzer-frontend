@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { BlogAnalysisSummary } from "../types/article";
+import { BlogAnalysisSummary, getCharacterVisual, getTendencyIcon, shortenBlogUrl } from "../types/article";
 import { trackEvent } from "../analytics/amplitude";
 
 interface ArticleCardProps {
@@ -9,6 +9,11 @@ interface ArticleCardProps {
 
 export function ArticleCard({ article, source }: ArticleCardProps) {
   const navigate = useNavigate();
+
+  // FE에서 결정
+  const { image } = getCharacterVisual(article.characterName);
+  const tendencyIcon = getTendencyIcon(article.topTendency.axisName, article.topTendency.score);
+  const blogUrlShort = shortenBlogUrl(article.blogUrl);
 
   const handleClick = () => {
     trackEvent("click_article", {
@@ -39,32 +44,25 @@ export function ArticleCard({ article, source }: ArticleCardProps) {
         {article.authorName}
       </h3>
       <p className="text-xs text-gray-500 underline mb-6">
-        {article.blogUrlShort}
+        {blogUrlShort}
       </p>
 
       {/* 캐릭터 영역: 이미지 + 이름 + 한줄 카피 */}
       <div className="flex items-center gap-4 mb-2">
         <img
-          src={article.characterImage}
+          src={image}
           alt={article.characterName}
           className="w-20 h-20 object-contain flex-shrink-0"
           onError={(e) => {
             e.currentTarget.style.display = "none";
-            const parent = e.currentTarget.parentElement;
-            if (parent) {
-              const fallback = document.createElement("div");
-              fallback.className = "text-5xl w-20 h-20 flex items-center justify-center flex-shrink-0";
-              fallback.textContent = article.characterEmoji;
-              parent.prepend(fallback);
-            }
           }}
         />
         <div>
           <div className="text-lg font-black text-black uppercase tracking-tight">
-            {article.characterEmoji} {article.characterName}
+            {article.characterName}
           </div>
           <p className="text-sm font-medium text-gray-600 leading-snug line-clamp-2 mt-1">
-            {article.oneLinerCopy}
+            {article.characterSummary}
           </p>
         </div>
       </div>
@@ -75,7 +73,7 @@ export function ArticleCard({ article, source }: ArticleCardProps) {
           {article.mbti}
         </span>
         <span className="border-4 border-black px-3 py-1 text-xs font-bold flex items-center gap-1">
-          {article.topTendency.icon} {article.topTendency.label} {article.topTendency.score}%
+          {tendencyIcon} {article.topTendency.label} {article.topTendency.score}%
         </span>
       </div>
 
