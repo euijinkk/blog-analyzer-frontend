@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Report } from "./pages/Report";
+import { Gallery } from "./pages/Gallery";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
@@ -38,6 +39,14 @@ const router = createBrowserRouter([
     element: (
       <Layout>
         <Report />
+      </Layout>
+    ),
+  },
+  {
+    path: "/gallery",
+    element: (
+      <Layout>
+        <Gallery />
       </Layout>
     ),
   },

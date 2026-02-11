@@ -1,6 +1,6 @@
 // React is used in JSX transformations
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import { ArrowLeftIcon, RefreshCwIcon, AlertCircle, DownloadIcon } from "lucide-react";
+import { ArrowLeftIcon, RefreshCwIcon, AlertCircle, DownloadIcon, ArrowRight } from "lucide-react";
 import { trackEvent } from "../analytics/amplitude";
 import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
@@ -12,14 +12,17 @@ import { MbtiSection } from "../components/ReportSections/MbtiSection";
 import { RepresentativePostSection } from "../components/ReportSections/RepresentativePostSection";
 import { BlogTendencySection } from "../components/ReportSections/BlogTendencySection";
 import { FortuneSection } from "../components/ReportSections/FortuneSection";
+import { ArticleGrid } from "../components/ArticleGrid";
 import { useBlogAnalysis } from "../api/hooks";
 import { useStoryDownload } from "../hooks/useStoryDownload";
+import { getArticlesExcluding } from "../data/mockArticles";
 import { AxiosError } from "axios";
 
 export function Report() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const blogUrl = searchParams.get("blog-url");
+  const fromArticle = searchParams.get("from") === "article";
 
   // Use React Query to fetch data
   const { data, isLoading, isError, error, refetch } = useBlogAnalysis(blogUrl);
@@ -39,9 +42,13 @@ export function Report() {
             <RefreshCwIcon size={64} className="text-black" />
           </div>
           <h2 className="text-2xl font-black text-black uppercase tracking-tight mb-2">
-            ANALYZING...
+            {fromArticle ? "LOADING..." : "ANALYZING..."}
           </h2>
-          <p className="text-black">블로그를 분석하고 있습니다</p>
+          <p className="text-black">
+            {fromArticle
+              ? "분석 결과를 불러오고 있습니다"
+              : "블로그를 분석하고 있습니다"}
+          </p>
         </div>
       </div>
     );
@@ -185,6 +192,43 @@ export function Report() {
               mbti={mbtiPrediction.result}
               blogTendency={blogTendency}
             />
+          </div>
+        </div>
+
+        {/* 다른 블로그 분석 섹션 */}
+        <div className="max-w-7xl mx-auto px-4 py-16 border-t-4 border-black">
+          <div className="text-left mb-12">
+            <div className="text-swiss-accent text-sm font-black tracking-widest mb-4">
+              03. EXPLORE MORE
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-4">
+              다른 블로그는
+              <br />
+              어떨까요?
+            </h2>
+            <p className="text-lg text-gray-600">
+              다양한 블로거들의 성향과 비교해보세요
+            </p>
+          </div>
+
+          {/* Article Grid - 현재 캐릭터 제외 */}
+          <ArticleGrid
+            articles={getArticlesExcluding(character.animal, 3)}
+            source="report"
+          />
+
+          {/* 더 보기 버튼 */}
+          <div className="flex justify-center mt-12">
+            <Link
+              to="/gallery"
+              className="swiss-btn flex items-center gap-3"
+              onClick={() => {
+                trackEvent("click_view_more_from_report");
+              }}
+            >
+              <span>더 많은 분석 보기</span>
+              <ArrowRight size={20} />
+            </Link>
           </div>
         </div>
       </main>
