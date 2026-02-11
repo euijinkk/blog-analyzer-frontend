@@ -22,10 +22,10 @@ export function AnalysisForm({ onSubmit, error }: AnalysisFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div className="mb-8">
+      <div className="mb-4">
         <label
           htmlFor="blogUrl"
-          className="block text-lg font-bold text-black uppercase tracking-wide mb-4"
+          className="block text-sm font-bold text-black uppercase tracking-wide mb-2"
         >
           BLOG URL
         </label>

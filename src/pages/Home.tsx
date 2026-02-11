@@ -27,61 +27,57 @@ export function Home() {
 
   return (
     <div className="bg-white pattern-grid-subtle">
-      <div className="w-full flex flex-col items-center px-4 py-16">
+      <div className="w-full flex flex-col items-center px-4 py-8 md:py-12">
         <div className="max-w-3xl w-full">
           {/* 헤더 영역 */}
-          <div className="text-left mb-12">
-            <h1 className="text-display-sm md:text-display-md font-black text-black uppercase tracking-tight mb-6">
-              BLOG
-              <br />
-              PERSONALITY
+          <div className="text-left mb-6">
+            <h1 className="text-4xl md:text-display-sm font-black text-black uppercase tracking-tight mb-3">
+              BLOG PERSONALITY
             </h1>
-            <p className="text-xl md:text-2xl text-black font-medium">
+            <p className="text-lg md:text-xl text-black font-medium">
               블로그 링크 하나로 글쓰기 스타일과 성향을 분석해 드려요
             </p>
           </div>
 
           {/* 기능 태그 */}
-          <div className="flex flex-wrap gap-3 mb-12">
+          <div className="flex flex-wrap gap-2 mb-6">
             <div className="swiss-tag flex items-center gap-2">
-              <PenTool size={16} />
+              <PenTool size={14} />
               <span>글쓰기 스타일</span>
             </div>
             <div className="swiss-tag flex items-center gap-2">
-              <Brain size={16} />
+              <Brain size={14} />
               <span>MBTI 추측</span>
             </div>
             <div className="swiss-tag flex items-center gap-2">
-              <Hash size={16} />
+              <Hash size={14} />
               <span>운세</span>
             </div>
             <div className="swiss-tag-accent flex items-center gap-2">
-              <Quote size={16} />
+              <Quote size={14} />
               <span>대표 작품</span>
             </div>
           </div>
 
           {/* 폼 컨테이너 */}
-          <div className="swiss-card">
+          <div className="swiss-card !p-4 md:!p-6">
             <AnalysisForm onSubmit={handleAnalyzeRequest} error={error} />
           </div>
         </div>
       </div>
 
       {/* 최근 분석된 블로그 섹션 */}
-      <div className="w-full border-t-4 border-black bg-white py-16 px-4">
+      <div className="w-full border-t-4 border-black bg-white py-8 md:py-12 px-4">
         <div className="max-w-7xl mx-auto">
           {/* 섹션 헤더 */}
-          <div className="text-left mb-12">
-            <div className="text-swiss-accent text-sm font-black tracking-widest mb-4">
+          <div className="text-left mb-8">
+            <div className="text-swiss-accent text-sm font-black tracking-widest mb-2">
               01. EXPLORE
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-black uppercase tracking-tight mb-4">
-              다른 사람들의
-              <br />
-              블로그 분석
+            <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-2">
+              다른 사람들의 블로그 분석
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-base text-gray-600">
               다양한 블로거들의 성향을 확인해보세요
             </p>
           </div>
@@ -90,7 +86,7 @@ export function Home() {
           <ArticleGrid articles={recentArticles} source="home" />
 
           {/* 더 보기 버튼 */}
-          <div className="flex justify-center mt-12">
+          <div className="flex justify-center mt-8">
             <Link
               to="/gallery"
               className="swiss-btn-accent flex items-center gap-3"
