@@ -1,5 +1,6 @@
 // React is used in JSX transformations
 import { ExternalLink } from "lucide-react";
+import { appendUtm } from "../../types/article";
 
 interface RepresentativePostSectionProps {
   post: {
@@ -21,9 +22,9 @@ export function RepresentativePostSection({
       </h2>
 
       <a
-        href={post.link}
+        href={appendUtm(post.link, "report_post")}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
         className="text-xl font-black text-black hover:text-swiss-accent transition flex items-center gap-2 mb-6 uppercase"
       >
         {post.title}

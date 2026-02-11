@@ -79,3 +79,15 @@ export function shortenBlogUrl(blogUrl: string): string {
     return blogUrl;
   }
 }
+
+// FE 헬퍼: UTM 파라미터 추가
+export function appendUtm(blogUrl: string, medium: string): string {
+  try {
+    const url = new URL(blogUrl);
+    url.searchParams.set("utm_source", "bloganalyzer");
+    url.searchParams.set("utm_medium", medium);
+    return url.toString();
+  } catch {
+    return blogUrl;
+  }
+}

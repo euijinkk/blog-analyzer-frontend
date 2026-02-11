@@ -16,6 +16,7 @@ import { ArticleGrid } from "../components/ArticleGrid";
 import { useBlogAnalysis } from "../api/hooks";
 import { useStoryDownload } from "../hooks/useStoryDownload";
 import { getArticlesExcluding } from "../data/mockArticles";
+import { appendUtm } from "../types/article";
 import { AxiosError } from "axios";
 
 export function Report() {
@@ -131,9 +132,9 @@ export function Report() {
             {blogUrl && (
               <div className="mt-4 text-sm border-l-4 border-black pl-4">
                 <a
-                  href={blogUrl}
+                  href={appendUtm(blogUrl, "report")}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   className="text-black hover:text-swiss-accent underline"
                 >
                   {blogUrl}
