@@ -3,6 +3,8 @@ import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
+  Outlet,
+  ScrollRestoration,
 } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Report } from "./pages/Report";
@@ -24,67 +26,81 @@ const queryClient = new QueryClient({
   },
 });
 
+function RootLayout() {
+  return (
+    <>
+      <ScrollRestoration />
+      <Outlet />
+    </>
+  );
+}
+
 // Define routes
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: (
-      <Layout>
-        <Home />
-      </Layout>
-    ),
-  },
-  {
-    path: "/report",
-    element: (
-      <Layout>
-        <Report />
-      </Layout>
-    ),
-  },
-  {
-    path: "/gallery",
-    element: (
-      <Layout>
-        <Gallery />
-      </Layout>
-    ),
-  },
-  {
-    path: "/about",
-    element: (
-      <Layout>
-        <About />
-      </Layout>
-    ),
-  },
-  {
-    path: "/contact",
-    element: (
-      <Layout>
-        <Contact />
-      </Layout>
-    ),
-  },
-  {
-    path: "/privacy-policy",
-    element: (
-      <Layout>
-        <PrivacyPolicy />
-      </Layout>
-    ),
-  },
-  {
-    path: "/terms-of-service",
-    element: (
-      <Layout>
-        <TermsOfService />
-      </Layout>
-    ),
-  },
-  {
-    path: "*",
-    element: <Navigate to="/" replace />,
+    element: <RootLayout />,
+    children: [
+      {
+        path: "/",
+        element: (
+          <Layout>
+            <Home />
+          </Layout>
+        ),
+      },
+      {
+        path: "/report",
+        element: (
+          <Layout>
+            <Report />
+          </Layout>
+        ),
+      },
+      {
+        path: "/gallery",
+        element: (
+          <Layout>
+            <Gallery />
+          </Layout>
+        ),
+      },
+      {
+        path: "/about",
+        element: (
+          <Layout>
+            <About />
+          </Layout>
+        ),
+      },
+      {
+        path: "/contact",
+        element: (
+          <Layout>
+            <Contact />
+          </Layout>
+        ),
+      },
+      {
+        path: "/privacy-policy",
+        element: (
+          <Layout>
+            <PrivacyPolicy />
+          </Layout>
+        ),
+      },
+      {
+        path: "/terms-of-service",
+        element: (
+          <Layout>
+            <TermsOfService />
+          </Layout>
+        ),
+      },
+      {
+        path: "*",
+        element: <Navigate to="/" replace />,
+      },
+    ],
   },
 ]);
 
