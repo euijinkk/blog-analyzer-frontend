@@ -101,13 +101,6 @@ export function Report() {
     fortune,
   } = data.data;
 
-  // 현재 캐릭터를 제외한 관련 블로그 가져오기
-  // const {
-  //   data: relatedArticles,
-  //   isLoading: isLoadingRelated,
-  //   isError: isErrorRelated,
-  // } = useArticlesExcluding(character.animal || '', 3);
-
   // Render the report when data is available
   return (
     <div className="min-h-screen bg-white">

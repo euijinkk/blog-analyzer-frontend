@@ -106,25 +106,6 @@ export function useArticles(params: ArticlesQueryParams = {}) {
 }
 
 // Convenience hook for random articles
-export function useRandomArticles(count = 3) {
+export function useRandomArticles(count: number) {
   return useArticles({ limit: count, sort: 'random' });
-}
-
-// Hook for articles excluding a specific character
-export function useArticlesExcluding(excludeCharacter: string, count = 3) {
-  const { data, isLoading, isError } = useArticles({
-    limit: 20,
-    sort: 'latest',
-  });
-
-  // Filter out the excluded character on the client side
-  const filteredArticles = data?.analyses
-    .filter((article) => article.characterName !== excludeCharacter)
-    .slice(0, count);
-
-  return {
-    data: filteredArticles,
-    isLoading,
-    isError,
-  };
 }

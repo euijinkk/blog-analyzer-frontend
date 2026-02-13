@@ -11,7 +11,7 @@ export function Home() {
   const [error, setError] = useState<string | null>(null);
 
   // 랜덤 3개 Article 가져오기
-  const { data, isLoading, isError } = useRandomArticles(3);
+  const { data, isLoading, isError } = useRandomArticles(4);
   const recentArticles = data?.analyses || [];
 
   const handleAnalyzeRequest = (blogUrl: string) => {
