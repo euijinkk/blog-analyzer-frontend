@@ -10,6 +10,7 @@ export const MOCK_ARTICLES: BlogAnalysisSummary[] = [
     representativePostTitle: "완벽한 준비를 기다리다 보면, 준비되지 않은 채로 평생을 살게 된다.",
     topTendency: { label: "트렌드형", score: 88, axisName: "trendEssence" },
     characterSummary: "핫한 소식을 독자와 나누며 함께 진화하는 앵무새 블로거",
+    viewCount: 0,
     createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
   },
   {
@@ -21,6 +22,7 @@ export const MOCK_ARTICLES: BlogAnalysisSummary[] = [
     representativePostTitle: "세상이 잠든 새벽, 나는 비로소 깨어나 진짜 나를 만난다.",
     topTendency: { label: "밤형", score: 94, axisName: "nightMorning" },
     characterSummary: "깊이 있는 통찰을 독자와 함께 탐구하는 올빼미 블로거",
+    viewCount: 0,
     createdAt: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
   },
   {
@@ -32,6 +34,7 @@ export const MOCK_ARTICLES: BlogAnalysisSummary[] = [
     representativePostTitle: "빠르게 쓴 글은 빠르게 잊히지만, 천천히 쓴 글은 오래 기억된다.",
     topTendency: { label: "서사형", score: 91, axisName: "narrativeImpact" },
     characterSummary: "무게감 있는 가치관으로 독자와 신뢰를 쌓는 코끼리 블로거",
+    viewCount: 0,
     createdAt: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(),
   },
   {
@@ -43,6 +46,7 @@ export const MOCK_ARTICLES: BlogAnalysisSummary[] = [
     representativePostTitle: "성공은 아침 5시에 시작된다. 남들이 자는 시간, 나는 달린다.",
     topTendency: { label: "아침형", score: 96, axisName: "nightMorning" },
     characterSummary: "트렌드를 주도하는 카리스마 있는 전문가 사자 블로거",
+    viewCount: 0,
     createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
   },
   {
@@ -54,6 +58,7 @@ export const MOCK_ARTICLES: BlogAnalysisSummary[] = [
     representativePostTitle: "복잡함 속에서 단순함을 찾는 것, 그것이 진정한 지혜다.",
     topTendency: { label: "본질형", score: 89, axisName: "trendEssence" },
     characterSummary: "지혜로운 통찰로 본질을 꿰뚫는 여우 블로거",
+    viewCount: 0,
     createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
   },
   {
@@ -65,6 +70,7 @@ export const MOCK_ARTICLES: BlogAnalysisSummary[] = [
     representativePostTitle: "배움은 혼자 하는 것이 아니라, 함께 나눌 때 비로소 완성된다.",
     topTendency: { label: "소통형", score: 93, axisName: "communicationUnilateral" },
     characterSummary: "트렌드의 파도 위에서 독자와 함께 헤엄치는 돌고래 블로거",
+    viewCount: 0,
     createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
   },
   {
@@ -76,6 +82,7 @@ export const MOCK_ARTICLES: BlogAnalysisSummary[] = [
     representativePostTitle: "기회는 준비된 자에게만 보인다. 나는 항상 준비되어 있다.",
     topTendency: { label: "임팩트형", score: 87, axisName: "narrativeImpact" },
     characterSummary: "핫한 뉴스를 재빨리 포착하고 독자에게 전달하는 독수리 블로거",
+    viewCount: 0,
     createdAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString(),
   },
   {
@@ -87,6 +94,7 @@ export const MOCK_ARTICLES: BlogAnalysisSummary[] = [
     representativePostTitle: "정상은 목표가 아니다. 올라가는 과정 자체가 진짜 목표다.",
     topTendency: { label: "성장형", score: 90, axisName: "completeGrowth" },
     characterSummary: "깊이 있는 통찰력으로 독자를 한 단계 끌어올리는 산양 블로거",
+    viewCount: 0,
     createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
   },
   {
@@ -98,6 +106,7 @@ export const MOCK_ARTICLES: BlogAnalysisSummary[] = [
     representativePostTitle: "일찍 일어나는 새가 벌레를 잡는다는 말, 정말 사실이었다.",
     topTendency: { label: "완성형", score: 92, axisName: "completeGrowth" },
     characterSummary: "트렌드를 주도하는 카리스마 있는 전문가 사자 블로거",
+    viewCount: 0,
     createdAt: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString(),
   },
   {
@@ -109,6 +118,7 @@ export const MOCK_ARTICLES: BlogAnalysisSummary[] = [
     representativePostTitle: "표면만 스치고 지나가면, 결코 진짜 아름다움을 볼 수 없다.",
     topTendency: { label: "서사형", score: 95, axisName: "narrativeImpact" },
     characterSummary: "깊이 있는 통찰을 독자와 함께 탐구하는 올빼미 블로거",
+    viewCount: 0,
     createdAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
   },
   {
@@ -120,6 +130,7 @@ export const MOCK_ARTICLES: BlogAnalysisSummary[] = [
     representativePostTitle: "트렌드를 따라가는 사람과 만드는 사람, 나는 후자다.",
     topTendency: { label: "트렌드형", score: 90, axisName: "trendEssence" },
     characterSummary: "핫한 소식을 독자와 나누며 함께 진화하는 앵무새 블로거",
+    viewCount: 0,
     createdAt: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString(),
   },
   {
@@ -131,6 +142,7 @@ export const MOCK_ARTICLES: BlogAnalysisSummary[] = [
     representativePostTitle: "세월이 흘러도 변하지 않는 진리, 그것을 나는 기록한다.",
     topTendency: { label: "본질형", score: 88, axisName: "trendEssence" },
     characterSummary: "무게감 있는 가치관으로 독자와 신뢰를 쌓는 코끼리 블로거",
+    viewCount: 0,
     createdAt: new Date(Date.now() - 9 * 24 * 60 * 60 * 1000).toISOString(),
   },
 ];
