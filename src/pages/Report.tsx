@@ -202,45 +202,13 @@ export function Report() {
         </div>
 
         {/* 다른 블로그 분석 섹션 */}
-        <div className="max-w-7xl mx-auto px-4 py-16 border-t-4 border-black">
-          <div className="text-left mb-12">
-            <div className="text-swiss-accent text-sm font-black tracking-widest mb-4">
-              03. EXPLORE MORE
-            </div>
-            <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-4">
-              다른 블로그는
-              <br />
-              어떨까요?
-            </h2>
-            <p className="text-lg text-gray-600">
-              다양한 블로거들의 성향과 비교해보세요
-            </p>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 py-8 border-t-4 border-black">
 
-          {/* Loading State */}
-          {/* {isLoadingRelated && (
-            <div className="text-center py-12">
-              <p className="text-black font-medium">추천 블로그를 찾고 있습니다...</p>
-            </div>
-          )} */}
 
-          {/* Error State */}
-          {/* {isErrorRelated && (
-            <div className="text-center py-12 border-4 border-swiss-accent p-6">
-              <p className="text-black font-medium">추천 블로그를 불러올 수 없습니다</p>
-            </div>
-          )} */}
 
-          {/* Article Grid - 현재 캐릭터 제외 */}
-          {/* {!isLoadingRelated && !isErrorRelated && relatedArticles && (
-            <ArticleGrid
-              articles={relatedArticles}
-              source="report"
-            />
-          )} */}
 
           {/* 더 보기 버튼 */}
-          <div className="flex justify-center mt-12">
+          <div className="flex justify-center">
             <Link
               to="/gallery"
               className="swiss-btn flex items-center gap-3"
@@ -248,7 +216,7 @@ export function Report() {
                 trackEvent("click_view_more_from_report");
               }}
             >
-              <span>더 많은 분석 보기</span>
+              <span>다른 블로거 둘러보기</span>
               <ArrowRight size={20} />
             </Link>
           </div>

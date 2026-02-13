@@ -73,14 +73,11 @@ export function Home() {
           {/* 섹션 헤더 */}
           <div className="text-left mb-8">
             <div className="text-swiss-accent text-sm font-black tracking-widest mb-2">
-              01. EXPLORE
+              EXPLORE
             </div>
             <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-2">
-              다른 사람들의 블로그 분석
+              블로거 둘러보기
             </h2>
-            <p className="text-base text-gray-600">
-              다양한 블로거들의 성향을 확인해보세요
-            </p>
           </div>
 
           {/* Loading State */}

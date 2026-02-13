@@ -39,13 +39,8 @@ export function Gallery() {
       <main className="max-w-7xl mx-auto px-4 py-12">
         {/* 페이지 제목 */}
         <div className="text-left mb-12">
-          <div className="text-swiss-accent text-sm font-black tracking-widest mb-4">
-            02. GALLERY
-          </div>
           <h2 className="text-4xl md:text-6xl font-black text-black uppercase tracking-tight mb-6">
-            블로그 분석
-            <br />
-            갤러리
+            블로거 둘러보기
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl">
             다양한 블로거들의 성향을 탐색하고, 나와 비슷한 블로그를 찾아보세요
