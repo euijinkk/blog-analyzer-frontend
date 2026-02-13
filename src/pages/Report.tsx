@@ -12,10 +12,8 @@ import { MbtiSection } from "../components/ReportSections/MbtiSection";
 import { RepresentativePostSection } from "../components/ReportSections/RepresentativePostSection";
 import { BlogTendencySection } from "../components/ReportSections/BlogTendencySection";
 import { FortuneSection } from "../components/ReportSections/FortuneSection";
-import { ArticleGrid } from "../components/ArticleGrid";
 import { useBlogAnalysis } from "../api/hooks";
 import { useStoryDownload } from "../hooks/useStoryDownload";
-import { getArticlesExcluding } from "../data/mockArticles";
 import { appendUtm } from "../types/article";
 import { AxiosError } from "axios";
 
@@ -102,6 +100,13 @@ export function Report() {
     mbtiPrediction,
     fortune,
   } = data.data;
+
+  // 현재 캐릭터를 제외한 관련 블로그 가져오기
+  // const {
+  //   data: relatedArticles,
+  //   isLoading: isLoadingRelated,
+  //   isError: isErrorRelated,
+  // } = useArticlesExcluding(character.animal || '', 3);
 
   // Render the report when data is available
   return (
@@ -212,11 +217,27 @@ export function Report() {
             </p>
           </div>
 
+          {/* Loading State */}
+          {/* {isLoadingRelated && (
+            <div className="text-center py-12">
+              <p className="text-black font-medium">추천 블로그를 찾고 있습니다...</p>
+            </div>
+          )} */}
+
+          {/* Error State */}
+          {/* {isErrorRelated && (
+            <div className="text-center py-12 border-4 border-swiss-accent p-6">
+              <p className="text-black font-medium">추천 블로그를 불러올 수 없습니다</p>
+            </div>
+          )} */}
+
           {/* Article Grid - 현재 캐릭터 제외 */}
-          <ArticleGrid
-            articles={getArticlesExcluding(character.animal, 3)}
-            source="report"
-          />
+          {/* {!isLoadingRelated && !isErrorRelated && relatedArticles && (
+            <ArticleGrid
+              articles={relatedArticles}
+              source="report"
+            />
+          )} */}
 
           {/* 더 보기 버튼 */}
           <div className="flex justify-center mt-12">

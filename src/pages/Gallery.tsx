@@ -1,20 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { ArticleGrid } from "../components/ArticleGrid";
-import { getArticlesSorted } from "../data/mockArticles";
 import { trackEvent } from "../analytics/amplitude";
+import { useArticles } from "../api/hooks";
 
 export function Gallery() {
   const [sortBy] = useState<"latest" | "random">("latest");
 
-  // Mock data 가져오기
-  const articles = getArticlesSorted(sortBy);
+  // API에서 데이터 가져오기
+  const { data, isLoading, isError } = useArticles({ limit: 12, sort: sortBy });
+  const articles = data?.analyses || [];
 
   // 페이지 진입 시 이벤트 트래킹
-  useState(() => {
+  useEffect(() => {
     trackEvent("view_gallery");
-  });
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -58,8 +59,24 @@ export function Gallery() {
           <button className="swiss-btn-outline">랜덤</button>
         </div> */}
 
+        {/* Loading State */}
+        {isLoading && (
+          <div className="text-center py-12">
+            <p className="text-black font-medium">갤러리를 불러오는 중...</p>
+          </div>
+        )}
+
+        {/* Error State */}
+        {isError && (
+          <div className="text-center py-12 border-4 border-swiss-accent p-6">
+            <p className="text-black font-medium">갤러리를 불러올 수 없습니다</p>
+          </div>
+        )}
+
         {/* Article Grid */}
-        <ArticleGrid articles={articles} source="gallery" />
+        {!isLoading && !isError && (
+          <ArticleGrid articles={articles} source="gallery" />
+        )}
 
         {/* 하단 CTA */}
         <div className="mt-16 text-center border-t-4 border-black pt-12">

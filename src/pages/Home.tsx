@@ -4,14 +4,15 @@ import { PenTool, Brain, Hash, Quote, ArrowRight } from "lucide-react";
 import { AnalysisForm } from "../components/AnalysisForm";
 import { ArticleGrid } from "../components/ArticleGrid";
 import { trackEvent } from "../analytics/amplitude";
-import { getRandomArticles } from "../data/mockArticles";
+import { useRandomArticles } from "../api/hooks";
 
 export function Home() {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
 
   // 랜덤 3개 Article 가져오기
-  const recentArticles = getRandomArticles(3);
+  const { data, isLoading, isError } = useRandomArticles(3);
+  const recentArticles = data?.analyses || [];
 
   const handleAnalyzeRequest = (blogUrl: string) => {
     // Validate URL
@@ -82,8 +83,24 @@ export function Home() {
             </p>
           </div>
 
+          {/* Loading State */}
+          {isLoading && (
+            <div className="text-center py-12">
+              <p className="text-black font-medium">로딩 중...</p>
+            </div>
+          )}
+
+          {/* Error State */}
+          {isError && (
+            <div className="text-center py-12 border-4 border-swiss-accent p-6">
+              <p className="text-black font-medium">분석 데이터를 불러올 수 없습니다</p>
+            </div>
+          )}
+
           {/* Article Grid */}
-          <ArticleGrid articles={recentArticles} source="home" />
+          {!isLoading && !isError && (
+            <ArticleGrid articles={recentArticles} source="home" />
+          )}
 
           {/* 더 보기 버튼 */}
           <div className="flex justify-center mt-8">
