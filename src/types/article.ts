@@ -36,12 +36,12 @@ export interface BlogAnalysisSummary {
 export const CHARACTER_MAP: Record<string, { emoji: string; image: string }> = {
   앵무새: { emoji: '🦜', image: '/images/parrot.png' },
   돌고래: { emoji: '🐬', image: '/images/dolphin.png' },
-  독수리: { emoji: '🦅', image: '/images/hawk.png' },
-  사자: { emoji: '🦁', image: '/images/lion.png' },
+  카멜레온: { emoji: '🦎', image: '/images/chameleon.png' },
+  매: { emoji: '🦅', image: '/images/hawk.png' },
+  강아지: { emoji: '🐶', image: '/images/puppy.png' },
+  늑대: { emoji: '🐺', image: '/images/wolf.png' },
   올빼미: { emoji: '🦉', image: '/images/owl.png' },
-  코끼리: { emoji: '🐘', image: '/images/wolf.png' },
-  산양: { emoji: '🧗', image: '/images/chameleon.png' },
-  여우: { emoji: '🦊', image: '/images/puppy.png' },
+  사자: { emoji: '🦁', image: '/images/lion.png' },
 };
 
 // FE에서 결정: 성향 축별 아이콘 매핑
