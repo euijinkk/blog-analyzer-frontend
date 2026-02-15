@@ -88,7 +88,7 @@ export interface ArticlesQueryParams {
 async function fetchArticles(
   params: ArticlesQueryParams = {}
 ): Promise<ArticlesResponse> {
-  const { limit = 12, sort = 'latest' } = params;
+  const { limit, sort = 'latest' } = params;
   const response = await api.get<ArticlesResponse>('articles', {
     params: { limit, sort },
   });

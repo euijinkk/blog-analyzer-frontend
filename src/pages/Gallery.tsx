@@ -9,7 +9,7 @@ export function Gallery() {
   const [sortBy] = useState<"latest" | "random">("latest");
 
   // API에서 데이터 가져오기
-  const { data, isLoading, isError } = useArticles({ limit: 12, sort: sortBy });
+  const { data, isLoading, isError } = useArticles({ limit: 50, sort: sortBy });
   const articles = data?.analyses || [];
 
   // 페이지 진입 시 이벤트 트래킹
