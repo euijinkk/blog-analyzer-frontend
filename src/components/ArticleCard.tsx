@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BlogAnalysisSummary, getCharacterVisual, getTendencyIcon, shortenBlogUrl } from "../types/article";
 import { trackEvent } from "../analytics/amplitude";
 
@@ -8,36 +8,17 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ article, source }: ArticleCardProps) {
-  const navigate = useNavigate();
-
   // FE에서 결정
   const { image } = getCharacterVisual(article.characterName);
   const tendencyIcon = getTendencyIcon(article.topTendency.axisName, article.topTendency.score);
   const blogUrlShort = shortenBlogUrl(article.blogUrl);
-
-  const handleClick = () => {
-    trackEvent("click_article", {
-      source,
-      character: article.characterName,
-      mbti: article.mbti,
-      article_id: article.id,
-    });
-    navigate(
-      `/report?blog-url=${encodeURIComponent(article.blogUrl)}&from=article`
-    );
-  };
+  const reportUrl = `/report?blog-url=${encodeURIComponent(article.blogUrl)}&from=article`;
 
   return (
-    <div
-      onClick={handleClick}
+    <Link
+      to={reportUrl}
+      onClick={() => trackEvent("click_article", { source, character: article.characterName, mbti: article.mbti, article_id: article.id })}
       className="swiss-card cursor-pointer flex flex-col h-full bg-white hover:border-swiss-accent"
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          handleClick();
-        }
-      }}
     >
       {/* 상단: 작가 이름 (가장 크게) */}
       <h3 className="text-2xl font-black text-black tracking-tight mb-1">
@@ -86,6 +67,6 @@ export function ArticleCard({ article, source }: ArticleCardProps) {
           {article.representativePostTitle}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
