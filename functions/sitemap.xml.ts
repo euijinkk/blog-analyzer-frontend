@@ -41,27 +41,18 @@ export const onRequestGet: PagesFunction = async () => {
 
   // Fetch all articles from backend
   let articles: BlogAnalysisSummary[] = [];
-  let debugInfo = '';
   try {
-    const res = await fetch(`${BACKEND_URL}/articles?limit=1000&sort=latest`);
-    debugInfo = `status=${res.status}`;
+    const res = await fetch(`${BACKEND_URL}/articles?limit=100&sort=latest`);
     if (res.ok) {
-      const raw = await res.text();
-      debugInfo += ` bodyLength=${raw.length}`;
-      const data = JSON.parse(raw) as ArticlesResponse;
+      const data = (await res.json()) as ArticlesResponse;
       articles = data.analyses ?? [];
-      debugInfo += ` articles=${articles.length}`;
-    } else {
-      const errorBody = await res.text();
-      debugInfo += ` error=${errorBody.substring(0, 200)}`;
     }
-  } catch (e) {
-    debugInfo = `exception=${e instanceof Error ? e.message : String(e)}`;
+  } catch {
+    // If backend fails, proceed with static routes only
   }
 
   // Build XML
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
-  xml += `<!-- debug: ${debugInfo} -->\n`;
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
   // Static routes
